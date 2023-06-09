@@ -1,15 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from "react-redux";
+// import reducer from "./reducers";
+import usersReducer from "./reducers/users";
+// import thunk from "redux-thunk";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Automatically adds the thunk middleware and the Redux DevTools extension
+const store = configureStore({
+  // Automatically calls `combineReducers`
+  reducer: {
+    users: usersReducer
+  }
+})
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 const { SearchBar } = Search;
 
+// {/**untuk menyimpan column ini dari mana aja */}
 const columns = [
   {
     dataField: "id",
@@ -66,10 +67,13 @@ const defaultSorted = [
   },
 ];
 
+
 const TableComponent = (props) => {
   return (
+    // {/* toolkit untuk membantu table dalam menggunakan searchbar, tombol tambahan */}
     <Container style={{ padding: "10px" }}>
-      <ToolkitProvider
+      
+      <ToolkitProvider  
         bootstrap4
         keyField="id"
         data={props.users}
@@ -77,6 +81,7 @@ const TableComponent = (props) => {
         search
         defaultSorted={defaultSorted}
       >
+         
         {(props) => (
           <div>
             <Row>

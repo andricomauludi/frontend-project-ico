@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
 
 
-
+/*menampilkan jumbotron setiap containers */
 const JumbotronComponent = (props) => {
   return (
     <div>

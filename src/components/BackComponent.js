@@ -4,6 +4,8 @@ import React from "react";
 import { Col, Row, Button } from "reactstrap";
 import {Link} from 'react-router-dom'
 
+
+/*Back component berfungsi untuk menampilkan tombol back pada setiap containers */
 export const BackComponent = () => {
   return (
     <Row className="mb-2">
