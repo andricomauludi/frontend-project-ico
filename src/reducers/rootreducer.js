@@ -7,6 +7,6 @@ import { configureStore } from '@reduxjs/toolkit'
 export const store = configureStore({
     // Automatically calls `combineReducers`
     reducer: {
-      users: usersReducer
+      users: usersReducer   //get state from usersreducer
     }
   })

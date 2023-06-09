@@ -25,13 +25,18 @@ const columns = [
     },
   },
   {
-    dataField: "nama",
-    text: "Nama",
+    dataField: "nama_product",
+    text: "Nama Product",
     sort: true,
   },
   {
-    dataField: "alamat",
-    text: "Alamat",
+    dataField: "harga",
+    text: "Harga",
+    sort: true,
+  },
+  {
+    dataField: "deskripsi",
+    text: "Deskripsi",
     sort: true,
   },
   {
@@ -68,9 +73,10 @@ const defaultSorted = [
   },
 ];
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {  //membuat props berasal dari state yang dihasilkan oleh redux-toolkit
   return {
-    users: state.users.users,
+    getProductLists: state.users.getProductLists,   //variable awal untuk diambil sama props, state untuk ambil dar store nya, users pertama untuk ambil di rootreducer, user kedua nama variable didalam state users.js
+    errorProductLists: state.users.errorProductLists,   //variable awal untuk diambil sama props, state untuk ambil dar store nya, users pertama untuk ambil di rootreducer, user kedua nama variable didalam state users.js
   };
 };
 
@@ -78,10 +84,10 @@ const TableComponent = (props) => {
   return (
     // {/* toolkit untuk membantu table dalam menggunakan searchbar, tombol tambahan */}
     <Container style={{ padding: "10px" }}>
-      <ToolkitProvider
+      {props.getProductLists ? <ToolkitProvider
         bootstrap4
         keyField="id"
-        data={props.users}
+        data={props.getProductLists}
         columns={columns}
         search
         defaultSorted={defaultSorted}
@@ -109,7 +115,8 @@ const TableComponent = (props) => {
             />
           </div>
         )}
-      </ToolkitProvider>
+      </ToolkitProvider> : null}
+      
     </Container>
   );
 };

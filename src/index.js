@@ -8,13 +8,13 @@ import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 // import { createStore,applyMiddleware, compose } from "redux";
 
 import { Provider } from "react-redux";
-import { store } from "./reducers/index";
+import { store } from "./reducers/rootreducer";  //semua kejadian state redux toolkit ada di sini semua
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store}> {/*store ini langsung diambil dari rootreducer (mengambil state dari reducers/users.js) */}
       <App />
     </Provider>
   </React.StrictMode>

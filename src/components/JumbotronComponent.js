@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
   return {
-    title: state.users.title,
+    title: state.users.title, //variable awal untuk diambil sama props, state untuk ambil dar store nya, users pertama untuk ambil di rootreducer, title nama variable didalam state users.js
   };
 };
 /*menampilkan jumbotron setiap containers */
