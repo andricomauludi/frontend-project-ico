@@ -1,14 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
-import { Container, Button } from "reactstrap";
-import { faInfo } from "@fortawesome/free-solid-svg-icons";
+import { Container, Button, Row, Col } from "reactstrap";
+import { faInfo, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import paginationFactory from 'react-bootstrap-table2-paginator';
+import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, {
   Search,
 } from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
+import { Link } from "react-router-dom";
 
 const { SearchBar } = Search;
 
@@ -37,17 +38,21 @@ const columns = [
     formatter: (rowContent, row) => {
       return (
         <div>
-          <Button color="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detail
-          </Button>
-
-          <Button color="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> edit
-          </Button>
-
-          <Button color="dark" className="me-2">
-            <FontAwesomeIcon icon={faTrash} /> Delete
-          </Button>
+          <Link to={"detail/" + row.id}>
+            <Button color="dark" className="me-2">
+              <FontAwesomeIcon icon={faInfo} /> Detail
+            </Button>
+          </Link>
+          <Link to={"edit/" + row.id}>
+            <Button color="dark" className="me-2">
+              <FontAwesomeIcon icon={faEdit} /> edit
+            </Button>
+          </Link>
+          <Link to={"delete"}>
+            <Button color="dark" className="me-2">
+              <FontAwesomeIcon icon={faTrash} /> Delete
+            </Button>
+          </Link>
         </div>
       );
     },
@@ -63,7 +68,7 @@ const defaultSorted = [
 
 const TableComponent = (props) => {
   return (
-    <Container style={{padding : '10px'}}>
+    <Container style={{ padding: "10px" }}>
       <ToolkitProvider
         bootstrap4
         keyField="id"
@@ -71,15 +76,28 @@ const TableComponent = (props) => {
         columns={columns}
         search
         defaultSorted={defaultSorted}
-        
       >
         {(props) => (
           <div>
-            <div style={{textAlign: 'right'}} className="my-3">
-              <SearchBar {...props.searchProps} placeholder="Search..." />
-            </div>
-            
-            <BootstrapTable {...props.baseProps} pagination={ paginationFactory()}/>
+            <Row>
+              <Col>
+                <Link to={"/create"}>
+                  <Button color="dark" className="me-2">
+                    <FontAwesomeIcon icon={faUserPlus} /> Create User
+                  </Button>
+                </Link>
+              </Col>
+              <Col>
+                <div style={{ textAlign: "right" }} className="my-3">
+                  <SearchBar {...props.searchProps} placeholder="Search..." />
+                </div>
+              </Col>
+            </Row>
+
+            <BootstrapTable
+              {...props.baseProps}
+              pagination={paginationFactory()}
+            />
           </div>
         )}
       </ToolkitProvider>
