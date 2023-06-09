@@ -10,6 +10,7 @@ import ToolkitProvider, {
   Search,
 } from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const { SearchBar } = Search;
 
@@ -67,13 +68,17 @@ const defaultSorted = [
   },
 ];
 
+const mapStateToProps = (state) => {
+  return {
+    users: state.users.users,
+  };
+};
 
 const TableComponent = (props) => {
   return (
     // {/* toolkit untuk membantu table dalam menggunakan searchbar, tombol tambahan */}
     <Container style={{ padding: "10px" }}>
-      
-      <ToolkitProvider  
+      <ToolkitProvider
         bootstrap4
         keyField="id"
         data={props.users}
@@ -81,7 +86,6 @@ const TableComponent = (props) => {
         search
         defaultSorted={defaultSorted}
       >
-         
         {(props) => (
           <div>
             <Row>
@@ -110,4 +114,4 @@ const TableComponent = (props) => {
   );
 };
 
-export default TableComponent;
+export default connect(mapStateToProps, null)(TableComponent);

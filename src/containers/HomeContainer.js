@@ -6,7 +6,7 @@ export default class HomeContainer extends Component {
   render() {
     return (
       <Container>
-        <TableComponent users={this.props.users}/>    {/* Karena ini adalah component maka props menggunakan this, tidak seperti arrow function */}
+        <TableComponent/>    {/* Karena ini adalah component maka props menggunakan this, tidak seperti arrow function */}
       </Container>
     );
   }

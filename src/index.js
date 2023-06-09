@@ -5,19 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
-import { configureStore } from '@reduxjs/toolkit'
-import { Provider } from "react-redux";
-// import reducer from "./reducers";
-import usersReducer from "./reducers/users";
-// import thunk from "redux-thunk";
+// import { createStore,applyMiddleware, compose } from "redux";
 
-// Automatically adds the thunk middleware and the Redux DevTools extension
-const store = configureStore({
-  // Automatically calls `combineReducers`
-  reducer: {
-    users: usersReducer
-  }
-})
+import { Provider } from "react-redux";
+import { store } from "./reducers/index";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

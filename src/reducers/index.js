@@ -1,9 +1,12 @@
-import {combineReducers} from 'redux';
-import users from './users';
+// import {combineReducers} from 'redux';
+import usersReducer from './users';
+import { configureStore } from '@reduxjs/toolkit'
 
 
-
-export default combineReducers({
-    users
-   
-})
+// Automatically adds the thunk middleware and the Redux DevTools extension
+export const store = configureStore({
+    // Automatically calls `combineReducers`
+    reducer: {
+      users: usersReducer
+    }
+  })

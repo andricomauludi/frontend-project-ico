@@ -1,8 +1,9 @@
 let initialState = {
+    title: "Tester",
     users: [
       {
         id: 1,
-        nama: "andrico",
+        nama: "andricomantab",
         alamat: "alamat",
         umur: 23,
         hp: "081212771239",

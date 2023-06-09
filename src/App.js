@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import NavbarComponent from "./components/NavbarComponent";
 import JumbotronComponent from "./components/JumbotronComponent";
-
 import { Container } from "reactstrap";
 import {
   BrowserRouter,
-  createBrowserRouter,
   Route,
-  RouterProvider,
   Routes,
 } from "react-router-dom";
 import HomeContainer from "./containers/HomeContainer";
@@ -17,18 +14,18 @@ import DetailUserContainer from "./containers/DetailUserContainer";
 
 export default class App extends Component {
   state = {
-    title: "Mornin Mood Coffee",
-    
+    title: "Tester",
+   
   };
   render() {
     return (
       <div>
         <NavbarComponent />
         <Container style={{ padding: "20px" }}>
-          <JumbotronComponent title={this.state.title} />
+          <JumbotronComponent />
           <BrowserRouter>
             <Routes>
-              <Route exact path="/" element={<HomeContainer users={this.state.users}/>} />
+              <Route exact path="/" element={<HomeContainer/>} />
               <Route exact path="/create" element={<CreateUserContainer />} />
               <Route exact path="/edit/:id" element={<EditUserContainer />} />
               <Route exact path="/detail/:id" element={<DetailUserContainer />} />

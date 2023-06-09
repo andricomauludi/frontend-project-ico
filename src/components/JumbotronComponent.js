@@ -1,9 +1,14 @@
 import React from "react";
 import { Button, Container } from "reactstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInfo } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
 
-
+const mapStateToProps = (state) => {
+  return {
+    title: state.users.title,
+  };
+};
 /*menampilkan jumbotron setiap containers */
 const JumbotronComponent = (props) => {
   return (
@@ -21,7 +26,9 @@ const JumbotronComponent = (props) => {
             out within the larger container.
           </p>
           <p className="lead">
-            <Button color="dark"><FontAwesomeIcon icon={faInfo} /> Learn More</Button>
+            <Button color="dark">
+              <FontAwesomeIcon icon={faInfo} /> Learn More
+            </Button>
           </p>
         </Container>
       </div>
@@ -29,4 +36,4 @@ const JumbotronComponent = (props) => {
   );
 };
 
-export default JumbotronComponent;
+export default connect(mapStateToProps, null)(JumbotronComponent);
