@@ -5,14 +5,25 @@ export const GET_PRODUCTS_LISTS = "GET_PRODUCT_LISTS";
 export const getProductLists = () => {
   return (dispatch) => {
     axios
-      .get("localhost:8090/api/products")
+      .get("http://127.0.0.1:8090/api/products")
       .then(function (response) {
-        // handle success
-        console.log(response);
+        dispatch({
+          type: GET_PRODUCTS_LISTS,
+          payload: {
+            data: response.data.data,
+            errorMessage: false,
+          },
+        });
       })
       .catch(function (error) {
-        // handle error
-        console.log(error);
+        dispatch({
+          type:GET_PRODUCTS_LISTS,
+          payload:{
+            data: false,
+            errorMessage:error.message,
+          }
+
+        })
       })
       .finally(function () {
         // always executed

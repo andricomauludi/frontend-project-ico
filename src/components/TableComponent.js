@@ -73,10 +73,11 @@ const defaultSorted = [
   },
 ];
 
-const mapStateToProps = (state) => {  //membuat props berasal dari state yang dihasilkan oleh redux-toolkit
+const mapStateToProps = (state) => {
+  //membuat props berasal dari state yang dihasilkan oleh redux-toolkit
   return {
-    getProductLists: state.users.getProductLists,   //variable awal untuk diambil sama props, state untuk ambil dar store nya, users pertama untuk ambil di rootreducer, user kedua nama variable didalam state users.js
-    errorProductLists: state.users.errorProductLists,   //variable awal untuk diambil sama props, state untuk ambil dar store nya, users pertama untuk ambil di rootreducer, user kedua nama variable didalam state users.js
+    getProductLists: state.users.getProductLists, //variable awal untuk diambil sama props, state untuk ambil dar store nya, users pertama untuk ambil di rootreducer, user kedua nama variable didalam state users.js
+    errorProductLists: state.users.errorProductLists, //variable awal untuk diambil sama props, state untuk ambil dar store nya, users pertama untuk ambil di rootreducer, user kedua nama variable didalam state users.js
   };
 };
 
@@ -84,39 +85,40 @@ const TableComponent = (props) => {
   return (
     // {/* toolkit untuk membantu table dalam menggunakan searchbar, tombol tambahan */}
     <Container style={{ padding: "10px" }}>
-      {props.getProductLists ? <ToolkitProvider
-        bootstrap4
-        keyField="id"
-        data={props.getProductLists}
-        columns={columns}
-        search
-        defaultSorted={defaultSorted}
-      >
-        {(props) => (
-          <div>
-            <Row>
-              <Col>
-                <Link to={"/create"}>
-                  <Button color="dark" className="me-2">
-                    <FontAwesomeIcon icon={faUserPlus} /> Create User
-                  </Button>
-                </Link>
-              </Col>
-              <Col>
-                <div style={{ textAlign: "right" }} className="my-3">
-                  <SearchBar {...props.searchProps} placeholder="Search..." />
-                </div>
-              </Col>
-            </Row>
+      {props.getProductLists ? (
+        <ToolkitProvider
+          bootstrap4
+          keyField="id"
+          data={props.getProductLists}
+          columns={columns}
+          search
+          defaultSorted={defaultSorted}
+        >
+          {(props) => (
+            <div>
+              <Row>
+                <Col>
+                  <Link to={"/create"}>
+                    <Button color="dark" className="me-2">
+                      <FontAwesomeIcon icon={faUserPlus} /> Create User
+                    </Button>
+                  </Link>
+                </Col>
+                <Col>
+                  <div style={{ textAlign: "right" }} className="my-3">
+                    <SearchBar {...props.searchProps} placeholder="Search..." />
+                  </div>
+                </Col>
+              </Row>
 
-            <BootstrapTable
-              {...props.baseProps}
-              pagination={paginationFactory()}
-            />
-          </div>
-        )}
-      </ToolkitProvider> : null}
-      
+              <BootstrapTable
+                {...props.baseProps}
+                pagination={paginationFactory()}
+              />
+            </div>
+          )}
+        </ToolkitProvider>
+      ) : null}
     </Container>
   );
 };

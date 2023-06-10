@@ -6,13 +6,13 @@ import { getProductLists } from "../actions/productAction";
 
 class HomeContainer extends Component {
   componentDidMount() {
-    this.props.dispatch(getProductLists());
+    this.props.dispatch(getProductLists());  //untuk melakukan productaction di productaction.js
   }
   render() {
     console.log()
     return (
       <Container>
-        <TableComponent />{" "}
+        <TableComponent />
         {/* Karena ini adalah component maka props menggunakan this, tidak seperti arrow function */}
       </Container>
     );
