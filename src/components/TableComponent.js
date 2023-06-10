@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
-import { Container, Button, Row, Col } from "reactstrap";
+import { Container, Button, Row, Col, Spinner } from "reactstrap";
 import { faInfo, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -118,7 +118,11 @@ const TableComponent = (props) => {
             </div>
           )}
         </ToolkitProvider>
-      ) : null}
+      ) : (
+        <div className="text-center">
+          {props.errorProductLists ? <h4 style={{color:"red"}}>{props.errorProductLists}</h4> : <Spinner color="dark" />}
+        </div>
+      )}
     </Container>
   );
 };
